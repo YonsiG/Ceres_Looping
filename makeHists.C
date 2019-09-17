@@ -159,6 +159,10 @@ void makeHists::createHists(const char* fileName)
  fatjet_pt_ee_sub->Sumw2();
  fatjet_pt_mm_sub->Sumw2();
  fatjet_pt_em_sub->Sumw2();
+
+ trueZPt_lead = new TH1D("trueZPt_lead","trueZPt_lead",100,0,400);
+ trueZPt_sub = new TH1D("trueZPt_sub","trueZPt_sub",100,0,400);
+ trueZPt_third = new TH1D("trueZPt_third","trueZPt_third",100,0,400);
 }
 
 void makeHists::saveHists()

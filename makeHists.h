@@ -96,6 +96,10 @@ class makeHists
   TH1D *fatjet_pt_mm_sub;
   TH1D *fatjet_pt_em_sub;
 
+  TH1D *trueZPt_lead;
+  TH1D *trueZPt_sub;
+  TH1D *trueZPt_third;
+
   void createHists(const char* fileName); 
   void saveHists();
 };

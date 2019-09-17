@@ -157,7 +157,7 @@ void ZZZAna::Loop(const char* typeName)
     }
  
 /**********select validated events********/
-   if (triZboson.M()<1000) 
+   if (triZboson.M()<500) 
     {
      myHists->cutflow->Fill(2.5,weight*137);
      myHists->cutflow_raw->Fill(2.5);

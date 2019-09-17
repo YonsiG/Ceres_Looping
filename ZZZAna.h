@@ -39,14 +39,18 @@ class ZZZAna
  std::vector<ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<float>>>*       lep_p4=0;
  std::vector<ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<float>>>*       jets_p4=0;
  std::vector<ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<float>>>*       fatjets_p4=0;
+ std::vector<ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<float>>>*       gen_part_p4=0;
  std::vector<double>*               J_SD_mass=0;
  std::vector<double>*               J_tau21=0;
  std::vector<double>*               J_pt=0;
  std::vector<double>*               lep_pt=0;
  std::vector<double>*               lep_eta=0;
  std::vector<double>*               lep_phi=0;
+ std::vector<double>*               gen_part_pt=0;
  std::vector<int>*                  lep_isWVZVeto=0;
  std::vector<int>*                  lep_id=0;
+ std::vector<int>*                  gen_part_id=0;
+ std::vector<int>*                  gen_part_status=0;
  Float_t                            weight;
  
  /************tatistical variables**************/
@@ -107,6 +111,10 @@ void ZZZAna::Initial(const char* rootName, int rootNumber)
  fChain->SetBranchAddress("J_SD_mass",&J_SD_mass);
  fChain->SetBranchAddress("J_tau21",&J_tau21);
  fChain->SetBranchAddress("J_pt",&J_pt);
+ fChain->SetBranchAddress("gen_part_p4",&gen_part_p4);
+ fChain->SetBranchAddress("gen_part_pt",&gen_part_pt);
+ fChain->SetBranchAddress("gen_part_id",&gen_part_id);
+ fChain->SetBranchAddress("gen_part_status",&gen_part_status);
 }
 
 void ZZZAna::End(int rootNumber)
