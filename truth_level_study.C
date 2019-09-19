@@ -4,6 +4,7 @@
 #include <TChain.h>
 #include <TFile.h>
 #include "TMath.h"
+#include "math.h"
 #include "TH1D.h"
 #include <iostream>
 #include <fstream>
@@ -24,6 +25,7 @@
 #include <TProfile.h>
 #include <TProfile2D.h>
 #include <TTree.h>
+#include "Math/VectorUtil.h"
 
 using namespace std;
 void ZZZAna::Loop(const char* typeName)
@@ -157,7 +159,7 @@ void ZZZAna::Loop(const char* typeName)
     }
  
 /**********select validated events********/
-   if (triZboson.M()<500) 
+   if (ZrankPt->at(0)<400 || ZrankPt->at(1)<400) 
     {
      myHists->cutflow->Fill(2.5,weight*137);
      myHists->cutflow_raw->Fill(2.5);
@@ -179,6 +181,13 @@ void ZZZAna::Loop(const char* typeName)
    myHists->trueZPt_lead->Fill(ZrankPt->at(0),weight);
    myHists->trueZPt_sub->Fill(ZrankPt->at(1),weight);
    myHists->trueZPt_third->Fill(ZrankPt->at(2),weight);
+
+   double angle1 = abs(ROOT::Math::VectorUtil::DeltaPhi(Zrank->at(0),Zrank->at(1)))*180/acos(-1);
+   double angle2 = abs(ROOT::Math::VectorUtil::DeltaPhi(Zrank->at(1),Zrank->at(2)))*180/acos(-1);
+   double angle3 = abs(ROOT::Math::VectorUtil::DeltaPhi(Zrank->at(0),Zrank->at(2)))*180/acos(-1);
+   myHists->deltaPhi_ls->Fill(angle1,weight);
+   myHists->deltaPhi_st->Fill(angle2,weight);
+   myHists->deltaPhi_lt->Fill(angle3,weight);
 
 /************clearing variables************/
    trueLeptons->clear();

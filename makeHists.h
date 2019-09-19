@@ -99,6 +99,9 @@ class makeHists
   TH1D *trueZPt_lead;
   TH1D *trueZPt_sub;
   TH1D *trueZPt_third;
+  TH1D *deltaPhi_ls;
+  TH1D *deltaPhi_st;
+  TH1D *deltaPhi_lt;
 
   void createHists(const char* fileName); 
   void saveHists();
